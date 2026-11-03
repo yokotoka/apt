@@ -1,0 +1,122 @@
+name: build
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    outputs:
+      matrix: ${{ steps.plan.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: pages
+        continue-on-error: true  # first run: branch does not exist yet
+      - id: plan
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Add arm64 later as "arm64:ubuntu-24.04-arm" (and in conf/distributions on gh-pages).
+          arches="amd64:ubuntu-24.04"
+          packages=pages/dists/stable/main/binary-amd64/Packages
+          matrix='[]'
+          for dir in packages/*/; do
+            pkg=$(basename "$dir")
+            . "$dir/recipe.env"
+            tag=$(gh api "repos/$UPSTREAM/releases/latest" --jq .tag_name)
+            version=${tag#v}
+            if [ -f "$packages" ] && awk -v p="$pkg" -v v="$version" \
+                '/^Package:/{n=$2} /^Version:/{if(n==p&&$2==v)f=1} END{exit !f}' "$packages"; then
+              echo "$pkg $version already published"
+              continue
+            fi
+            for a in $arches; do
+              matrix=$(jq -c --arg p "$pkg" --arg v "$version" --arg t "$tag" --arg u "$UPSTREAM" \
+                --arg arch "${a%%:*}" --arg runner "${a#*:}" \
+                '. + [{package:$p,version:$v,tag:$t,upstream:$u,arch:$arch,runner:$runner}]' <<<"$matrix")
+            done
+          done
+          echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
+
+  build:
+    needs: plan
+    if: needs.plan.outputs.matrix != '[]'
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch upstream source
+        run: git clone --depth 1 --branch "${{ matrix.tag }}" "https://github.com/${{ matrix.upstream }}.git" upstream
+      - name: Build
+        env:
+          VERSION: ${{ matrix.version }}
+        run: |
+          mkdir out
+          packages/${{ matrix.package }}/build.sh upstream out
+      - uses: actions/upload-artifact@v4
+        with:
+          name: deb-${{ matrix.package }}-${{ matrix.arch }}
+          path: out/*.deb
+          if-no-files-found: error
+
+  publish:
+    needs: build
+    runs-on: ubuntu-24.04
+    concurrency:
+      group: publish
+      cancel-in-progress: false
+    steps:
+      - name: Check out or create gh-pages
+        run: |
+          git clone "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" pages
+          cd pages
+          if git ls-remote --exit-code --heads origin gh-pages >/dev/null; then
+            git checkout gh-pages
+          else
+            git checkout --orphan gh-pages
+            git rm -rf . >/dev/null 2>&1 || true
+          fi
+      - uses: actions/download-artifact@v4
+        with:
+          path: debs
+          pattern: deb-*
+          merge-multiple: true
+      - name: Import signing key
+        env:
+          KEY: ${{ secrets.APT_SIGNING_KEY }}
+        run: |
+          sudo apt-get install -y --no-install-recommends reprepro
+          echo "$KEY" | gpg --batch --import
+          echo "FPR=$(gpg --list-secret-keys --with-colons | awk -F: '/^fpr/{print $10;exit}')" >> "$GITHUB_ENV"
+      - name: Update repository
+        run: |
+          cd pages
+          mkdir -p conf
+          cat > conf/distributions <<EOF
+          Origin: yokotoka
+          Label: yokotoka
+          Suite: stable
+          Codename: stable
+          Architectures: amd64
+          Components: main
+          SignWith: $FPR
+          EOF
+          for deb in ../debs/*.deb; do reprepro -b . includedeb stable "$deb"; done
+          gpg --export "$FPR" > key.gpg
+          touch .nojekyll
+          git config user.name "apt-bot"
+          git config user.email "1014859+yokotoka@users.noreply.github.com"
+          git add -A
+          git commit -m "Publish $(basename -a ../debs/*.deb | tr '\n' ' ')"
+          git push origin gh-pages
