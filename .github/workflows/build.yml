@@ -111,7 +111,7 @@ jobs:
           Components: main
           SignWith: $FPR
           EOF
-          for deb in ../debs/*.deb; do reprepro -b . includedeb stable "$deb"; done
+          for deb in ../debs/*.deb; do reprepro -b . -S utils -P optional includedeb stable "$deb"; done
           gpg --export "$FPR" > key.gpg
           touch .nojekyll
           git config user.name "apt-bot"
