@@ -1,0 +1,38 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Origin: yokotoka
+Label: yokotoka
+Suite: stable
+Codename: stable
+Date: Tue, 03 Nov 2026 02:58:33 UTC
+Architectures: amd64 arm64
+Components: main
+MD5Sum:
+ ef949f1ca0b84a6e941ed63a2b7d7411 7316 main/binary-amd64/Packages
+ 4d2cb369beba41179135ef9f050568ca 3303 main/binary-amd64/Packages.gz
+ 8f70ece663a9ca90b71a127497a523ed 85 main/binary-amd64/Release
+ e7062fdb9e69fc2b2746f7acebbb976d 7316 main/binary-arm64/Packages
+ af7ab6de1864ac08d1cdb15b2ce279fd 3306 main/binary-arm64/Packages.gz
+ 7f9e9ff16d692f7b0aff9b4aa1523da9 85 main/binary-arm64/Release
+SHA1:
+ 5f9f597d04486dd3131e13bed6048cefa512ce67 7316 main/binary-amd64/Packages
+ 9a2795f2dd67db3c3afc16b3c91c72caa53220a8 3303 main/binary-amd64/Packages.gz
+ 51609c65240bb789ed8a6ecc3e18fbe38b8bfc41 85 main/binary-amd64/Release
+ fa6ea5df92090dcc173bafdfdd4782ab5ce55a92 7316 main/binary-arm64/Packages
+ 16571ac94bf5821cf6265644508efd041f83bd93 3306 main/binary-arm64/Packages.gz
+ d3186bcd05cb7605385d1b730a5788bb77234015 85 main/binary-arm64/Release
+SHA256:
+ d7135a3cfd2a5c649f771b1cf90f2b37ce0ffffa4d2c1af96c81f44c11d31cfc 7316 main/binary-amd64/Packages
+ cb01a031ab6a11a317758725d257684e6024e62e9c3716fb1075e5b16b3c4473 3303 main/binary-amd64/Packages.gz
+ 4534bac7efbac1d8dfb68e90e324c8c36dd4e22fe3a0eb480ca01d6c09f6474d 85 main/binary-amd64/Release
+ 5048a0ae060075ec3c544b67da1872afcd17976b19089007661d8b4857d42941 7316 main/binary-arm64/Packages
+ 2ea64f13d0497d6d31feb5ed09ef9d56dc6d2ecdc31f6025f3c50d33e8a6a083 3306 main/binary-arm64/Packages.gz
+ 8b31bcd6c3d0b2cfd56310ddd30b4d3f3a091f768b2d6872432634f87b8ffa40 85 main/binary-arm64/Release
+-----BEGIN PGP SIGNATURE-----
+
+iHUEARYKAB0WIQTS9DV7jBdzibS26IDtUGONfaa/qgUCaulN2QAKCRDtUGONfaa/
+qhvXAQC41wyzmCgKzl6dyGGKDi1pbl8o31poYioy/kiiUGZ/GgD/daMhDIFwATMn
+NSMpXHwh0TTb0UVuA7MvjLdyj3hVzgs=
+=rZGz
+-----END PGP SIGNATURE-----

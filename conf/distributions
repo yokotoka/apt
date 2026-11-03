@@ -1,0 +1,7 @@
+Origin: yokotoka
+Label: yokotoka
+Suite: stable
+Codename: stable
+Architectures: amd64 arm64
+Components: main
+SignWith: D2F4357B8C177389B4B6E880ED50638D7DA6BFAA
