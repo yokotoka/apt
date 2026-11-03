@@ -24,21 +24,20 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          # Add arm64 later as "arm64:ubuntu-24.04-arm" (and in conf/distributions on gh-pages).
-          arches="amd64:ubuntu-24.04"
-          packages=pages/dists/stable/main/binary-amd64/Packages
+          arches="amd64:ubuntu-24.04 arm64:ubuntu-24.04-arm"
           matrix='[]'
           for dir in packages/*/; do
             pkg=$(basename "$dir")
             . "$dir/recipe.env"
             tag=$(gh api "repos/$UPSTREAM/releases/latest" --jq .tag_name)
             version=${tag#v}
-            if [ -f "$packages" ] && awk -v p="$pkg" -v v="$version" \
-                '/^Package:/{n=$2} /^Version:/{if(n==p&&$2==v)f=1} END{exit !f}' "$packages"; then
-              echo "$pkg $version already published"
-              continue
-            fi
             for a in $arches; do
+              packages=pages/dists/stable/main/binary-${a%%:*}/Packages
+              if [ -f "$packages" ] && awk -v p="$pkg" -v v="$version" \
+                  '/^Package:/{n=$2} /^Version:/{if(n==p&&$2==v)f=1} END{exit !f}' "$packages"; then
+                echo "$pkg $version ${a%%:*} already published"
+                continue
+              fi
               matrix=$(jq -c --arg p "$pkg" --arg v "$version" --arg t "$tag" --arg u "$UPSTREAM" \
                 --arg arch "${a%%:*}" --arg runner "${a#*:}" \
                 '. + [{package:$p,version:$v,tag:$t,upstream:$u,arch:$arch,runner:$runner}]' <<<"$matrix")
@@ -108,7 +107,7 @@ jobs:
           Label: yokotoka
           Suite: stable
           Codename: stable
-          Architectures: amd64
+          Architectures: amd64 arm64
           Components: main
           SignWith: $FPR
           EOF

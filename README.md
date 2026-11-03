@@ -3,7 +3,7 @@
 Debian/Ubuntu packages built from source in GitHub Actions when upstream publishes a release.
 Signed apt repository, served by GitHub Pages.
 
-Packages: `zellij` (amd64).
+Packages: `zellij` (amd64, arm64).
 
 ## Use
 
