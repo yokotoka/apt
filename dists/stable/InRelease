@@ -5,34 +5,34 @@ Origin: yokotoka
 Label: yokotoka
 Suite: stable
 Codename: stable
-Date: Tue, 03 Nov 2026 02:58:33 UTC
+Date: Thu, 12 Nov 2026 03:40:25 UTC
 Architectures: amd64 arm64
 Components: main
 MD5Sum:
- ef949f1ca0b84a6e941ed63a2b7d7411 7316 main/binary-amd64/Packages
- 4d2cb369beba41179135ef9f050568ca 3303 main/binary-amd64/Packages.gz
+ 8cb7bd77b5a418bc91edb78023afd480 7699 main/binary-amd64/Packages
+ 5f9f40233c5e61f0691293197a279c1b 3417 main/binary-amd64/Packages.gz
  8f70ece663a9ca90b71a127497a523ed 85 main/binary-amd64/Release
- e7062fdb9e69fc2b2746f7acebbb976d 7316 main/binary-arm64/Packages
- af7ab6de1864ac08d1cdb15b2ce279fd 3306 main/binary-arm64/Packages.gz
+ de91b0601006f7648a24520549fbc075 7699 main/binary-arm64/Packages
+ 81eae90d52e2c0cf27f478386994587f 3411 main/binary-arm64/Packages.gz
  7f9e9ff16d692f7b0aff9b4aa1523da9 85 main/binary-arm64/Release
 SHA1:
- 5f9f597d04486dd3131e13bed6048cefa512ce67 7316 main/binary-amd64/Packages
- 9a2795f2dd67db3c3afc16b3c91c72caa53220a8 3303 main/binary-amd64/Packages.gz
+ ee158a368ef8526bbf0a58ec7466dc3a5bf76857 7699 main/binary-amd64/Packages
+ 99636eeadf7e503486b663602561b7f8ef9b725c 3417 main/binary-amd64/Packages.gz
  51609c65240bb789ed8a6ecc3e18fbe38b8bfc41 85 main/binary-amd64/Release
- fa6ea5df92090dcc173bafdfdd4782ab5ce55a92 7316 main/binary-arm64/Packages
- 16571ac94bf5821cf6265644508efd041f83bd93 3306 main/binary-arm64/Packages.gz
+ b89f7ddc6c9da1ee131adaeebf8c216d62bd1aa7 7699 main/binary-arm64/Packages
+ 15968f7a1efc62a614b070306ce943e09974c5ba 3411 main/binary-arm64/Packages.gz
  d3186bcd05cb7605385d1b730a5788bb77234015 85 main/binary-arm64/Release
 SHA256:
- d7135a3cfd2a5c649f771b1cf90f2b37ce0ffffa4d2c1af96c81f44c11d31cfc 7316 main/binary-amd64/Packages
- cb01a031ab6a11a317758725d257684e6024e62e9c3716fb1075e5b16b3c4473 3303 main/binary-amd64/Packages.gz
+ 0d5fdde7b35d8ee0f4d80b20d67b5726dc9ce6f06c62f21e33b15706a3192e6b 7699 main/binary-amd64/Packages
+ eeadefbe5a7ab0ff7d728a5800d7aa4edd45472df01267b1f394f1803b606d5e 3417 main/binary-amd64/Packages.gz
  4534bac7efbac1d8dfb68e90e324c8c36dd4e22fe3a0eb480ca01d6c09f6474d 85 main/binary-amd64/Release
- 5048a0ae060075ec3c544b67da1872afcd17976b19089007661d8b4857d42941 7316 main/binary-arm64/Packages
- 2ea64f13d0497d6d31feb5ed09ef9d56dc6d2ecdc31f6025f3c50d33e8a6a083 3306 main/binary-arm64/Packages.gz
+ 30680fad817997a357312354776f88f4ea02ee2a0e9be61838c261e13fd40908 7699 main/binary-arm64/Packages
+ c92633c25871efcada4e97a651985702958b9e69cae78d6310c5d3b791c7417c 3411 main/binary-arm64/Packages.gz
  8b31bcd6c3d0b2cfd56310ddd30b4d3f3a091f768b2d6872432634f87b8ffa40 85 main/binary-arm64/Release
 -----BEGIN PGP SIGNATURE-----
 
-iHUEARYKAB0WIQTS9DV7jBdzibS26IDtUGONfaa/qgUCaulN2QAKCRDtUGONfaa/
-qhvXAQC41wyzmCgKzl6dyGGKDi1pbl8o31poYioy/kiiUGZ/GgD/daMhDIFwATMn
-NSMpXHwh0TTb0UVuA7MvjLdyj3hVzgs=
-=rZGz
+iHUEARYKAB0WIQTS9DV7jBdzibS26IDtUGONfaa/qgUCavU1KQAKCRDtUGONfaa/
+qiCYAQCi3FDAUQJBdorcAA9KXuWcbGEwaLxt5aeM1TD7rA8DDgD/a5bVW3bTS0dx
+MSGsy5SeXsBzsNIoaJk/SlnvfEOwYQc=
+=4tnC
 -----END PGP SIGNATURE-----

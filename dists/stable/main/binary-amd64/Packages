@@ -1,17 +1,17 @@
 Package: zellij
-Version: 0.45.1
+Version: 0.46.0
 Architecture: amd64
 Homepage: https://zellij.dev
 Maintainer: Aram Drevekenin <aram@poor.dev>
-Installed-Size: 51512
+Installed-Size: 86970
 Depends: libc6 (>= 2.39), zlib1g (>= 1:1.1.4)
 Priority: optional
 Section: utils
-Filename: pool/main/z/zellij/zellij_0.45.1_amd64.deb
-Size: 10590264
-SHA256: 431b7fe61356767a004a29bec3da29ed7ca442e909931c5f1e1e38bc057b8f18
-SHA1: 2fd64821f219dca7a496444eb104f9db7a27c59d
-MD5sum: f33184d4e346ccca83e0db39d5c6ab2e
+Filename: pool/main/z/zellij/zellij_0.46.0_amd64.deb
+Size: 27655700
+SHA256: 08a6e81588f2c5af52bb30d4efbe762f22002c09392c796ca8b405a3e59f5b6b
+SHA1: 310e0181f69423e64c2f117f547f2de825364a42
+MD5sum: da720e933548d7e8840395fd0e86e196
 Description: A terminal workspace with batteries included
  <h1 align="center">
    <br>
@@ -47,25 +47,24 @@ Description: A terminal workspace with batteries included
  </p>
  .
  <br>
-     <p align="center">
-     <picture>
-       <source media="(prefers-color-scheme: dark)"
- srcset="https://github.com/user-attachments/assets/bc5daac4-140a-4b83-8729-71c944ee1100">
-       <img
+ <p align="center">
+   <picture><source media="(prefers-color-scheme: dark)"
+ srcset="https://github.com/user-attachments/assets/bc5daac4-140a-4b83-8729-71c944ee1100"><img
  src="https://github.com/user-attachments/assets/55156624-a71a-46b5-939e-f562e3b2dd7f"
- alt="Sponsored by ">
-     </picture>
-     &nbsp;
-     &nbsp;
-     <a href="https://www.gresearch.com/">
-         <picture>
-           <source media="(prefers-color-scheme: dark)"
- srcset="https://github.com/user-attachments/assets/d609936a-abf8-4406-8cfc-889f76a09d74">
-           <img
+ alt="Sponsored by"></picture>
+   &nbsp;&nbsp;
+   <a href="https://www.gresearch.com/"><picture><source
+ media="(prefers-color-scheme: dark)"
+ srcset="https://github.com/user-attachments/assets/d609936a-abf8-4406-8cfc-889f76a09d74"><img
  src="https://github.com/user-attachments/assets/742ae902-fe9d-41c6-baf2-4bc143061da3"
- alt="gresearch logo">
-         </picture>
-     </a>
+ alt="G-Research logo"></picture></a>
+   &nbsp;&nbsp;
+   <a href="https://www.codo.tech/"><picture><source
+ media="(prefers-color-scheme: dark)"
+ srcset="https://github.com/user-attachments/assets/7887429c-f299-4a1f-9b61-2ea5e8cd512f"><img
+ height="30"
+ src="https://github.com/user-attachments/assets/d92b43d1-e009-4c73-a238-e96ffee3a9e0"
+ alt="codo.tech logo"></picture></a>
  </p>
  .
  # What is this?
@@ -185,5 +184,8 @@ Description: A terminal workspace with batteries included
  ## Sponsored by
  <a href="https://terminaltrove.com/"><img
  src="https://avatars.githubusercontent.com/u/121595180?s=200&v=4"
+ width="80px"></a>
+ <a href="https://github.com/redcathode"><img
+ src="https://avatars.githubusercontent.com/u/75963592?s=200&v=4"
  width="80px"></a>
 
